@@ -1,0 +1,57 @@
+{% extends 'products_app/master.html' %}
+{%load static%}
+{% block 'title' %}  ثبت نام{% endblock %}
+
+{% block 'content' %}
+
+
+    <section class="h-screen px-4 flex items-center" style="height: 1%;">
+        <div class="container mx-auto max-w-screen-lg">
+            <div class="bg-white rounded-2xl overflow-hidden">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="flex-1 p-8 md:p-4 lg:p-20 lg:pb-0">
+                        <form method="post">
+                            {%csrf_token%}
+                            <h2 class="text-3xl font-YekanBakh-ExtraBlack my-4">ثبت نام</h2>
+                            <label class="label">
+                                <span class="label-text-alt">نام  :</span>
+                              </label>
+                            <input type="text" class="input input-bordered w-full my-2"name="name" />
+                            <label class="label">
+                                <span class="label-text-alt">  نام خانوادگی:</span>
+                              </label>
+                            <input type="text" class="input input-bordered w-full my-2"name="lname" />
+                            <label class="label">
+                                <span class="label-text-alt">ایمیل:</span>
+                              </label>
+                            <input type="email" class="input input-bordered w-full my-2"name="email" />
+                            <label class="label">
+                                <span class="label-text-alt">نام کاربری:</span>
+                              </label>
+                            <input type="text" class="input input-bordered w-full my-2"name="username" />
+                            <label class="label">
+                                <span class="label-text-alt">پسورد:</span>
+                              </label>
+                            <input type="password" class="input input-bordered w-full my-2"name="password" />
+                            <label class="label">
+                                <span class="label-text-alt">تکرارپسورد:</span>
+                              </label>
+                            <input type="password" class="input input-bordered w-full my-2"name="rpassword" />
+                            <input type="submit" class="btn bg-stone-800 hover:bg-stone-900 text-white w-full my-4" value="ثبت نام">
+                            {%if errors%}
+                               {%for i in errors%}
+                               <div style="color: white; text-align: center; background-color: red;height: 50px;" ><h3><b>{{i}}</b></h3></div>
+                               {%endfor%}
+                            {%endif%}   
+                        </form>
+                        <p class="text-center my-4">قبلا ثبت نام کرده اید؟ <a href="{%url 'login'%}">وارد شوید</a></p>
+                    </div>
+                    <div class="hidden md:block">
+                        <img class="bg-cover" src="../assets/images/sign-up.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

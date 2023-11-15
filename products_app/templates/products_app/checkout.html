@@ -1,0 +1,114 @@
+{% extends 'products_app/master.html' %}
+{%load static%}
+{% block 'title' %} جزییات پرداخت{% endblock %}
+
+{% block 'content' %}
+
+    <section class="my-14 mt-4 px-4">
+        <div class="container mx-auto max-w-screen-xl">
+            <div class="bg-white p-4 rounded-3xl mb-4">
+                <div class="text-sm breadcrumbs">
+                  <ul>
+                    <li><a>خانه</a></li> 
+                    <li>جزئیات پرداخت</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="bg-white rounded-3xl p-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="form-control w-full">
+                        <label class="label">
+                          <span class="label-text-alt">نام:</span>
+                        </label>
+                        <input type="text" class="input input-bordered w-full" />
+                    
+                    </div>
+                    <div class="form-control w-full">
+                        <label class="label">
+                          <span class="label-text-alt">نام خانوادگی:</span>
+                        </label>
+                        <input type="text" class="input input-bordered w-full" />
+                    
+                    </div>
+                    <div class="form-control w-full">
+                        <label class="label">
+                          <span class="label-text-alt">نام شرکت (اختیاری):</span>
+                        </label>
+                        <input type="text" class="input input-bordered w-full" />
+                    
+                    </div>
+                    <div class="form-control w-full">
+                        <label class="label">
+                          <span class="label-text-alt">کشور:</span>
+                        </label>
+                        <select class="select select-bordered">
+                            <option selected>ایران</option>
+                            <option>ترکیه</option>
+                            <option>فرانسه</option>
+                            <option>آمریکا</option>
+                            <option>انگلیس</option>
+                            <option>سوئد</option>
+                          </select>
+                    
+                    </div>
+                    <div class="form-control w-full">
+                        <label class="label">
+                          <span class="label-text-alt">استان:</span>
+                        </label>
+                        <input type="text" class="input input-bordered w-full" />
+                    
+                    </div>
+                    <div class="form-control w-full">
+                        <label class="label">
+                          <span class="label-text-alt">شهر:</span>
+                        </label>
+                        <input type="text" class="input input-bordered w-full" />
+                    
+                    </div>
+                    <div class="form-control w-full">
+                        <label class="label">
+                          <span class="label-text-alt">کدپستی:</span>
+                        </label>
+                        <input type="text" class="input input-bordered w-full" />
+                    
+                    </div>
+                    <div class="form-control w-full">
+                        <label class="label">
+                          <span class="label-text-alt">تلفن:</span>
+                        </label>
+                        <input type="text" class="input input-bordered w-full" />
+                    
+                    </div>
+                    <div class="form-control w-full">
+                        <label class="label">
+                          <span class="label-text-alt">ایمیل:</span>
+                        </label>
+                        <input type="text" class="input input-bordered w-full" />
+                    
+                    </div>
+                    <div class="form-control w-full">
+                        <label class="label">
+                          <span class="label-text-alt">شماره تماس دوم:</span>
+                        </label>
+                        <input type="text" class="input input-bordered w-full" />
+                    
+                    </div>
+                </div>
+                <div class="flex justify-start mt-4">
+                    <div class="form-control">
+                        <label class="cursor-pointer label">
+                            <input type="radio" name="radio-6" class="radio radio-warning" />
+
+                          <span class="label-text mr-2">ثبت سفارش به منزله پذیرفتن قوانین سایت می باشد.</span>
+                        </label>
+                      </div>
+                      
+                </div>
+                <button class="btn bg-stone-800 hover:bg-stone-900 text-white mt-4">ثبت سفرش و پرداخت</button>
+            </div>
+            
+        </div>
+
+    </section>
+
+    {% endblock %}

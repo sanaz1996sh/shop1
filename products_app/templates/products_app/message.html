@@ -1,0 +1,18 @@
+{% extends 'products_app/master.html' %}
+{%load static%}
+{% block 'title' %}  ثبت نام{% endblock %}
+
+{% block 'content' %}
+
+    <section class="my-20 px-4">
+        <div class="container mx-auto max-w-screen-xl">
+            <div class="bg-white max-w-md rounded-3xl p-6 flex flex-col text-center mx-auto justify-center leading-8">
+                <img class="w-1/2 mx-auto" src="../assets/images/m.png" alt="">
+                <p class="text-3xl font-YekanBakh-ExtraBlack mb-4"> پیام شما با موفقیت ارسال شد:)</p>
+                <a class="bg-yellow-500 py-2 px-6 rounded-xl" href="{%url 'index'%}">برو به صفحه اصلی</a>
+            </div>
+           
+        </div>
+    </section>
+
+  {% endblock %}

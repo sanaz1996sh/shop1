@@ -1,0 +1,16 @@
+{% extends 'products_app/master.html' %}
+{%load static%}
+{% block 'title' %} صفحه اصلی{% endblock %}
+
+{% block 'content' %}
+
+
+    <section class="h-screen px-4 flex items-center">
+        <div class="container mx-auto max-w-screen-sm text-center leading-10">
+            <img class="w-3/4 mb-16 mx-auto" src="{%static 'products_app/assets/images/404.png'%}" alt="">
+            <p class="text-3xl font-YekanBakh-ExtraBlack mb-4">صفحه مورد نظر یافت نشد!!</p>
+            <a class="bg-yellow-500 py-2 px-6 rounded-xl" href="{%url 'index'%}">برو به صفحه اصلی</a>
+        </div>
+    </section>
+
+{% endblock %}
