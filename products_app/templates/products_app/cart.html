@@ -14,9 +14,46 @@
                   </ul>
                 </div>
               </div>
+  
             <div class="grid grid-cols-12 gap-4">
+                
                 <div class="col-span-12 md:col-span-9">
+                    {%for itm in products%}    
                     <div class="bg-white rounded-3xl p-4 flex flex-col md:flex-row items-center justify-center mb-4 gap-16">
+                        <div>
+                            <img class="w-32 border rounded-2xl" src="{{itm.product.img.url}}" alt="">
+                        </div>
+                        <div class="number flex">
+                            <a href="{% url 'delcart' itm.product.id %}">حذف محصول</a>
+                            
+                        </div>
+                        <div class="leading-10">
+                            <h1 class="font-YekanBakh-ExtraBold text-base">{{itm.product.name}}</h1>
+                            <p></p>
+                        
+                        </div>
+                        <div class="flex gap-4 text-base mt-4">
+                            <!--<span class="line-through">{{itm.product.price}}</span>-->
+                            <span class="text-yellow-500">{{itm.product.price}} </span>
+                          </div>
+                        <div>
+                            <div class="number flex">
+                                <span class="minus p-4">تعداد:</span>
+                                <form action="{% url 'edqnt' itm.product.id%}" method="post">
+                                   {%csrf_token%} 
+                                   <!--<span class="input input-bordered text-center w-20" >{{itm.qnt}}</span>-->
+                                   <input type="number" name="qnt" value="{{itm.qnt}}" class="input input-bordered text-center w-20" />
+                                   <input type="submit" name="change" value="اعمال تغییرات">
+                                </form>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    {%endfor%}                    
+
+
+                    <!--<div class="bg-white rounded-3xl p-4 flex flex-col md:flex-row items-center justify-center mb-4 gap-16">
                         <div>
                             <img class="w-32 border rounded-2xl" src="../assets/images/product-8.jpg" alt="">
                         </div>
@@ -36,54 +73,40 @@
                                 
                             </div>
                         </div>
-                    </div>
-                    <div class="bg-white rounded-3xl p-4 flex flex-col md:flex-row items-center justify-center mb-4 gap-16">
-                        <div>
-                            <img class="w-32 border rounded-2xl" src="../assets/images/product-8.jpg" alt="">
-                        </div>
-                        <div class="leading-10">
-                            <h1 class="font-YekanBakh-ExtraBold text-base">دریل شارژِ مدل رونیکس</h1>
-                            <p>دسته بندی: دریل ها</p>
-                        
-                        </div>
-                        <div class="flex gap-4 text-base mt-4">
-                            <span class="line-through">360.000 تومان</span>
-                            <span class="text-yellow-500">280.000 تومان</span>
-                          </div>
-                        <div>
-                            <div class="number flex">
-                                <span class="minus p-4">تعداد:</span>
-                                <input type="text" value="1" class="input input-bordered text-center w-20" />
-                                
-                            </div>
-                        </div>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="col-span-12 md:col-span-3">
                     <div class="bg-white rounded-3xl p-8">
                         <div class="flex flex-col font-YekanBakh-ExtraBold  text-lg">
-                            <div class="flex items-center justify-between p-4 bg-yellow-100 rounded-lg">
-                                <span>تعداد خرید:</span>
-                                <span>2 عدد</span>
+                            <div style="display: block;
+                            margin-bottom: 10px;" class="flex items-center justify-between p-4 bg-yellow-100 rounded-lg">
+                                {% for itm in products %}
+                                
+                                <span>{{ itm.product.name }} : {{ itm.qnt }}عدد</span><br>
+                                {% endfor %}
+                                
                             </div>
                             <div class="flex items-center justify-between p-4">
                                 <span>مبلغ کل:</span>
-                                <span>300.000 تومان</span>
+                                <span>{{t}} ریال</span>
                             </div>
                             <div class="flex items-center justify-between p-4 bg-yellow-100 rounded-lg">
                                 <span>هزینه ارسال:</span>
-                                <span>140.000</span>
+                                {%for item in snd%}
+                                <span >{{item.send}} ریال</span>
+                                {%endfor%}
                             </div>
                             <div class="flex items-center justify-between p-4">
                                 <span>مبلغ نهایی:</span>
-                                <span>440.000</span>
+                                <span>{{to}} ریال</span>
                             </div>
-                            <button class="btn bg-stone-800 hover:bg-stone-900 text-white">پرداخت</button>
+                            <button class="btn bg-stone-800 hover:bg-stone-900 text-white"><a href="{%url 'pardakht'%}">پرداخت</a></button>
                         </div>
 
                     </div>
                 </div>
             </div>
+
         </div>
 
     </section>

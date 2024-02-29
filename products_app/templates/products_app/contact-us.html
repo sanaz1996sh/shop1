@@ -26,7 +26,7 @@
                     </div>
                     <div>
                       <h3 class="text-base font-YekanBakh-ExtraBold mb-2">ایمیل:</h3>
-                      <p>info@rtl-theme.com</p>
+                      <p>.....</p>
                     </div>
                   </div>
                   <div class="bg-white border rounded-3xl p-4 flex items-center flex-col text-center gap-4">
@@ -38,7 +38,7 @@
                     </div>
                     <div>
                       <h3 class="text-base font-YekanBakh-ExtraBold mb-2">آدرس:</h3>
-                      <p> تهران، خیابان، کوچه، فرعی 2</p>
+                      <p> شهرکرد</p>
                     </div>
                   </div>
                   <div class="bg-white border rounded-3xl p-4 flex items-center flex-col text-center gap-4">
@@ -49,7 +49,7 @@
                     </div>
                     <div>
                       <h3 class="text-base font-YekanBakh-ExtraBold mb-2">تماس:</h3>
-                      <p>038-32221503</p>
+                      <p>038-......</p>
                     </div>
                   </div>
                   <div class="bg-white border rounded-3xl p-4 flex items-center flex-col text-center gap-4">
@@ -61,7 +61,7 @@
                     </div>
                     <div>
                       <h3 class="text-base font-YekanBakh-ExtraBold mb-2">ساعت کاری:</h3>
-                      <p>9 الی 15</p>
+                      <p>9 الی 20</p>
                     </div>
                   </div>
                 </div>
@@ -69,13 +69,37 @@
               </div>
               <div class="p-4">
                 <h3 class="text-xl font-YekanBakh-ExtraBold mb-2">با ما در ارتباط باشید...</h3>
-                <!--<div class="form-control w-full">-->
-                <form class="form-control w-full" method="post">
+                
+                <div class="form-control w-full">
+                  <form class="form-control w-full"  method="post">
+                    {%csrf_token%}
+                    
+                    {{form.name.label}}:{{form.name}}
+                    <div style="color: rgb(255, 94, 0);">{{form.name.help_text}}</div>
+                    <hr >
+                    {{form.subject.label}}:{{form.subject}}
+                    <hr>
+                    {{form.email.label}}:{{form.email}}
+                  <div style="color: rgb(255, 94, 0);">{{form.email.help_text}}</div>
+                    <hr >
+                    {{form.message.label}}:{{form.message}}
+                    
+                    <hr >
+                    {%if error%}
+                    <div style="background-color: red; color: white;">
+                      <b>فرم خطا دارد!:(</b>
+
+                    </div>
+                    {%endif%}
+                    <input type="submit" class="btn bg-stone-800 hover:bg-stone-900 text-white my-3" value="ارسال پیام">
+  
+                  </form>
+                <!--<form class="form-control w-full" method="post">
                   {%csrf_token%}
                   <label class="label">
                     <span class="label-text-alt"> نام:</span>
                   </label>
-                  <input type="text" class="input input-bordered w-full" name="name" />
+                  <input  class="input input-bordered w-full" name="name" />
                   <label class="label">
                     <span class="label-text-alt">موضوع پیام:</span>
                   </label>
@@ -89,8 +113,8 @@
                   </label>
                   <textarea class="textarea textarea-bordered h-24" placeholder="متن پیام را بنویسید..." name="message"></textarea>
                   <input type="submit" class="btn bg-stone-800 hover:bg-stone-900 text-white my-3" value="ارسال پیام">
-                </form>
-                <!--</div>-->
+                </form>-->
+                </div>
               </div>
             </div>
         </div>

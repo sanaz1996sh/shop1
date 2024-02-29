@@ -45,9 +45,7 @@
                               </div> 
                               <li><a href="{%url 'index'%}">صفحه اصلی</a></li>
                               <li><a href="{%url 'shop'%}">فروشگاه</a></li>
-                              <li><a href="{%url 'checkout'%}">جزئیات پرداخت</a></li>
-                              <!--<li><a href="comparison.html">مقایسه محصول</a></li>-->
-                              <!--<li><a href="blog.html">وبلاگ</a></li>-->
+                              
                               <li><a href="{%url 'about'%}">درباره ما</a></li>
                               <li><a href="{%url 'contact'%}">تماس با ما</a></li>
 
@@ -56,36 +54,48 @@
                     </div>
               </div>
               <div class="flex items-center lg:flex-1 gap-8">
-                  <div><a href="/"><img src="{%static 'products_app/assets/images/logo.png'%}" alt=""></a></div>
+                  <div><a href="/"><img src="{%static 'products_app/assets/images/s1.jpg'%}" alt="" style="width: 100px;"></a></div>
                   <div class="hidden lg:block form-control w-full">
                       <div class="relative">
-                        <input type="text" placeholder="جستجو کنید در ترازو ..." class="input input-bordered w-full placeholder:text-sm" /> 
-                        <button class="btn absolute top-0 left-0 rounded-r-none">
+                        <form method="get" action="{%url 'shop'%}">
+                        <input type="text" placeholder="جستجو کنید  ..." name="search" value="{{search}}" class="input input-bordered w-full placeholder:text-sm" /> 
+                        <input type="submit" value="search" class="btn absolute top-0 left-0 rounded-r-none">
+                        <!--<button class="btn absolute top-0 left-0 rounded-r-none">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                             </svg>
                             
-                        </button>
+                        </button>-->
+                      </form>
                       </div>
                     </div>
               </div>
               <div class="flex items-center gap-6">
                   <div>
-                  <a href="question.html"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <!--<a href="question.html"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">-->
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
                   </svg>
                   </a>
                   </div>
+                  {%if "login" in request.session%}
+                  <div class="hidden lg:block"><a href="{%url 'lout'%}">خروج / ثبت نام</a></div>
+                  <a href="{%url 'login'%}">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 lg:hidden">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                    </svg>
+                  </a>
+                  {%else%}
+
                   <div class="hidden lg:block"><a href="{%url 'login'%}">ورود / ثبت نام</a></div>
                   <a href="{%url 'login'%}">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 lg:hidden">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                     </svg>
                   </a>
-                  
+                  {%endif%}
                   <div class="indicator">
-                      <span class="indicator-item badge bg-yellow-400">4+</span> 
-                      <a href="cart.html" class="p-1">
+                      <span class="indicator-item badge bg-yellow-400"></span> 
+                      <a href="{%url 'cart'%}" class="p-1">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                             </svg>                              
@@ -96,7 +106,7 @@
           <div class="flex justify-between items-center pb-4">
               <div class="block lg:hidden form-control w-full">
                   <div class="relative">
-                    <input type="text" placeholder="جستجو کنید در ترازو ..." class="input input-bordered w-full placeholder:text-sm" /> 
+                    <input type="text" placeholder="جستجو کنید  ..." class="input input-bordered w-full placeholder:text-sm" /> 
                     <button class="btn absolute top-0 left-0 rounded-r-none">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -110,9 +120,7 @@
                       <ul class="flex gap-x-10">
                         <li><a href="{%url 'index'%}">صفحه اصلی</a></li>
                         <li><a href="{%url 'shop'%}">فروشگاه</a></li>
-                        <li><a href="{%url 'checkout'%}">جزئیات پرداخت</a></li>
-                        <!--<li><a href="comparison.html">مقایسه محصول</a></li>
-                        <li><a href="blog.html">وبلاگ</a></li>-->
+                        
                         <li><a href="{%url 'about'%}">درباره ما</a></li>
                         <li><a href="{%url 'contact'%}">تماس با ما</a></li>
                       </ul>
@@ -187,43 +195,52 @@
               <div class="col-span-12 lg:col-span-5">
                   <img class="mb-4" src="../assets/images/logo.png" alt="">
                   <p>
-                    ترازو با فراهم آوردن تنوع معقولی از محصولات در کنار عرضه با قیمت مناسب آن‌ها، به دنبال خرید راحت و رضایت‌بخش ابزارآلات برای همراهان خودش است و این مهم را با مهیا کردن امکان بررسی فنی و کاربردی ابزارآلات و ارائه محتوای مناسب و غنی محقق می‌سازد.
+                    گالری ساعت بهترین و به روز ترین ساعت ها را برای شما فراهم می کند و لحظه های خوبی برای شما آرزومند است
                   </p>
               </div>
               <div class="col-span-12 lg:col-span-2 text-right md:text-center">
                   <h3 class="font-YekanBakh-Bold text-white mb-4 text-lg">دسترسی سریع</h3>
                   <ul>
-                      <li><a href="index.html">صفحه اصلی</a></li>
-                      <li><a href="shop.html">فروشگاه</a></li>
-                      <li><a href="question.html">سوالات متداول</a></li>
-                      <li><a href="contact-us.html">تماس با ما</a></li>
-                      <li><a href="blog.html">وبلاگ</a></li>
+                      <li><a href="{%url 'index'%}">صفحه اصلی</a></li>
+                      <li><a href="{%url 'shop'%}">فروشگاه</a></li>
+                      <!--<li><a href="question.html">سوالات متداول</a></li>-->
+                      <li><a href="{%url 'contact'%}">تماس با ما</a></li>
+                      <!--<li><a href="blog.html">وبلاگ</a></li>-->
                   </ul>
               </div>
               <div class="col-span-12 lg:col-span-2 text-right md:text-center">
-                  <h3 class="font-YekanBakh-Bold text-white mb-4 text-lg">خدمات شرکت</h3>
+                  <h3 class="font-YekanBakh-Bold text-white mb-4 text-lg"> گالری ساعت</h3>
                   <ul>
-                      <li><a href="single-product.html">صفحه محصول</a></li>
-                      <li><a href="single-page.html">جزئیات بلاگ</a></li>
-                      <li><a href="successful.html">ثبت موفق</a></li>
-                      <li><a href="unsuccessful.html">ثبت ناموفق</a></li>
-                      <li><a href="404.html">404</a></li>
+                      <li><a href="">ساعت زنانه </a></li>
+                      <li><a href=""> ساعت مردانه</a></li>
+                      <li><a href="">ساعت های ست </a></li>
+                      <li><a href=""> ساعت بچه گانه</a></li>
+                      <li><a href=""></a></li>
                   </ul>
               </div>
-              <div class="col-span-12 lg:col-span-3">
+
+              <div class="col-span-12 lg:col-span-2 text-right md:text-center">
+                <h3 class="font-YekanBakh-Bold text-white mb-4 text-lg"> گالری ساعت</h3>
+                <ul>
+                    <li><span> آدرس:</span></li>
+                    <li><span>شماره تماس:</span></li>
+                    
+                </ul>
+            </div>
+              <!--<div class="col-span-12 lg:col-span-3">
                   <h3 class="font-YekanBakh-Bold text-white mb-4 text-lg">عضویت در خبرنامه</h3>
                   <div class="flex items-center">
                     <img src="{%static 'products_app/assets/images/enamad_logo.png'%}" alt="">
                     <img src="{%static 'products_app/assets/images/samandehi_logo.png'%}" alt="">
                   </div>
-              </div>
+              </div>-->
           </div>
       </div>
     </footer>
 
     <footer class="footer footer-center p-4 bg-stone-700 text-white">
       <div>
-        <p>Copyright © 2023 - تمامی حقوق برای راست چین محفوظ می باشد</p>
+        <p>Copyright © 2023 - تمامی حقوق برای گالری ساعت محفوظ می باشد</p>
       </div>
     </footer>
     <script src="{%static 'products_app/node_modules/swiper/swiper-bundle.min.js'%}"></script>
